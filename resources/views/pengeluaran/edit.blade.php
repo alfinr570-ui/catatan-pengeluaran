@@ -37,6 +37,45 @@
             </div>
 
             
+<div class="mb-3">
+
+    <label class="form-label">
+        Kategori
+    </label>
+
+    <select name="kategori"
+            class="form-select @error('kategori') is-invalid @enderror">
+
+        <option value="Makanan"
+            {{ $pengeluaran->kategori == 'Makanan' ? 'selected' : '' }}>
+            Makanan
+        </option>
+
+        <option value="Transportasi"
+            {{ $pengeluaran->kategori == 'Transportasi' ? 'selected' : '' }}>
+            Transportasi
+        </option>
+
+        <option value="Kuliah"
+            {{ $pengeluaran->kategori == 'Kuliah' ? 'selected' : '' }}>
+            Kuliah
+        </option>
+
+        <option value="Kos"
+            {{ $pengeluaran->kategori == 'Kos' ? 'selected' : '' }}>
+            Kos
+        </option>
+
+        <option value="Hiburan"
+            {{ $pengeluaran->kategori == 'Hiburan' ? 'selected' : '' }}>
+            Hiburan
+        </option>
+
+    </select>
+
+</div>
+
+            
             <div class="mb-3">
 
                 <label class="form-label">

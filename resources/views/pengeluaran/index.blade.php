@@ -13,12 +13,32 @@
 
 </div>
 
+
+<div class="card mb-4 shadow-sm">
+
+    <div class="card-body">
+
+        <h5 class="card-title">
+            Total Seluruh Pengeluaran
+        </h5>
+
+        <h2 class="text-danger">
+
+            Rp {{ number_format($total_pengeluaran, 0, ',', '.') }}
+
+        </h2>
+
+    </div>
+
+</div>
+
 <table class="table table-bordered table-striped">
 
     <thead class="table-dark">
         <tr>
             <th>No</th>
             <th>Nama Pengeluaran</th>
+            <th>Kategori</th>
             <th>Nominal</th>
             <th>Deskripsi</th>
             <th width="200">Aksi</th>
@@ -29,10 +49,15 @@
 
         @forelse($data_pengeluaran as $item)
 
-        <tr>
+        <tr class="{{ $item->nominal > 500000 ? 'table-danger' : '' }}">
             <td>{{ $loop->iteration }}</td>
 
             <td>{{ $item->nama_pengeluaran }}</td>
+            <td>
+    <span class="badge bg-primary">
+        {{ $item->kategori }}
+    </span>
+</td>
 
             <td>
                 Rp {{ number_format($item->nominal, 0, ',', '.') }}

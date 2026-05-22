@@ -9,11 +9,18 @@ class PengeluaranController extends Controller
 {
     
     public function index()
-    {
-        $data_pengeluaran = Pengeluaran::all();
+{
+    
+    $data_pengeluaran = Pengeluaran::all();
 
-        return view('pengeluaran.index', compact('data_pengeluaran'));
-    }
+    
+    $total_pengeluaran = Pengeluaran::sum('nominal');
+
+    return view('pengeluaran.index', compact(
+        'data_pengeluaran',
+        'total_pengeluaran'
+    ));
+}
 
     
     public function create()
@@ -26,17 +33,18 @@ class PengeluaranController extends Controller
     {
         
         $request->validate([
-            'nama_pengeluaran' => 'required|min:3',
-            'nominal' => 'required|numeric',
-        ]);
+    'nama_pengeluaran' => 'required|min:3',
+    'kategori' => 'required',
+    'nominal' => 'required|numeric',
+]);
 
         
         Pengeluaran::create([
-            'nama_pengeluaran' => $request->nama_pengeluaran,
-            'nominal' => $request->nominal,
-            'deskripsi' => $request->deskripsi,
-        ]);
-
+    'nama_pengeluaran' => $request->nama_pengeluaran,
+    'kategori' => $request->kategori,
+    'nominal' => $request->nominal,
+    'deskripsi' => $request->deskripsi,
+]);
         
         return redirect('/pengeluaran')
             ->with('success', 'Data pengeluaran berhasil ditambahkan!');
@@ -54,20 +62,22 @@ class PengeluaranController extends Controller
     public function update(Request $request, $id)
     {
         
-        $request->validate([
-            'nama_pengeluaran' => 'required|min:3',
-            'nominal' => 'required|numeric',
-        ]);
+       $request->validate([
+    'nama_pengeluaran' => 'required|min:3',
+    'kategori' => 'required',
+    'nominal' => 'required|numeric',
+]);
 
         
         $pengeluaran = Pengeluaran::find($id);
 
         
         $pengeluaran->update([
-            'nama_pengeluaran' => $request->nama_pengeluaran,
-            'nominal' => $request->nominal,
-            'deskripsi' => $request->deskripsi,
-        ]);
+    'nama_pengeluaran' => $request->nama_pengeluaran,
+    'kategori' => $request->kategori,
+    'nominal' => $request->nominal,
+    'deskripsi' => $request->deskripsi,
+]);
 
         
         return redirect('/pengeluaran')

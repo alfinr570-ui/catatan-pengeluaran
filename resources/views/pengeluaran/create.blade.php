@@ -36,6 +36,36 @@
             </div>
 
             
+<div class="mb-3">
+
+    <label class="form-label">
+        Kategori
+    </label>
+
+    <select name="kategori"
+            class="form-select @error('kategori') is-invalid @enderror">
+
+        <option value="">
+            -- Pilih Kategori --
+        </option>
+
+        <option value="Makanan">Makanan</option>
+        <option value="Transportasi">Transportasi</option>
+        <option value="Kuliah">Kuliah</option>
+        <option value="Kos">Kos</option>
+        <option value="Hiburan">Hiburan</option>
+
+    </select>
+
+    @error('kategori')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+    @enderror
+
+</div>
+
+            
             <div class="mb-3">
 
                 <label class="form-label">
