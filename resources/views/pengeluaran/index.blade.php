@@ -7,7 +7,8 @@
     <h2>Daftar Pengeluaran</h2>
 
     <a href="/pengeluaran/create"
-       class="btn btn-primary rounded-3 shadow-sm"
+       class="btn btn-primary text-white rounded-3 shadow-sm px-4 py-2">
+
        + Tambah Data
     </a>
 
