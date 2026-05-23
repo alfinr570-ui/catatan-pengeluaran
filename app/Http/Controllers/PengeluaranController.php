@@ -32,9 +32,10 @@ class PengeluaranController extends Controller
     public function store(Request $request)
     {
         
-        $request->validate([
+       $request->validate([
     'nama_pengeluaran' => 'required|min:3',
     'kategori' => 'required',
+    'tanggal_pengeluaran' => 'required|date',
     'nominal' => 'required|numeric',
 ]);
 
@@ -42,6 +43,7 @@ class PengeluaranController extends Controller
         Pengeluaran::create([
     'nama_pengeluaran' => $request->nama_pengeluaran,
     'kategori' => $request->kategori,
+    'tanggal_pengeluaran' => $request->tanggal_pengeluaran,
     'nominal' => $request->nominal,
     'deskripsi' => $request->deskripsi,
 ]);
@@ -65,6 +67,7 @@ class PengeluaranController extends Controller
        $request->validate([
     'nama_pengeluaran' => 'required|min:3',
     'kategori' => 'required',
+    'tanggal_pengeluaran' => 'required|date',
     'nominal' => 'required|numeric',
 ]);
 
@@ -75,6 +78,7 @@ class PengeluaranController extends Controller
         $pengeluaran->update([
     'nama_pengeluaran' => $request->nama_pengeluaran,
     'kategori' => $request->kategori,
+    'tanggal_pengeluaran' => $request->tanggal_pengeluaran,
     'nominal' => $request->nominal,
     'deskripsi' => $request->deskripsi,
 ]);

@@ -7,40 +7,41 @@
     <h2>Daftar Pengeluaran</h2>
 
     <a href="/pengeluaran/create"
-       class="btn btn-primary">
+       class="btn btn-primary rounded-3 shadow-sm"
        + Tambah Data
     </a>
 
 </div>
 
 
-<div class="card mb-4 shadow-sm">
+<div class="card shadow-sm mb-4 rounded-4">
 
-    <div class="card-body">
+    <div class="card-body p-4">
 
-        <h5 class="card-title">
+        <h5 class="text-secondary mb-2">
             Total Seluruh Pengeluaran
         </h5>
 
-        <h2 class="text-danger">
+        <h1 class="fw-bold text-danger">
 
             Rp {{ number_format($total_pengeluaran, 0, ',', '.') }}
 
-        </h2>
+        </h1>
 
     </div>
 
 </div>
-
-<table class="table table-bordered table-striped">
-
+<div class="table-responsive">
+<table class="table table-hover align-middle">
+</div>
     <thead class="table-dark">
         <tr>
             <th>No</th>
             <th>Nama Pengeluaran</th>
             <th>Kategori</th>
+            <th>Tanggal</th>
             <th>Nominal</th>
-            <th>Deskripsi</th>
+            <th>Deskripsi</th>           
             <th width="200">Aksi</th>
         </tr>
     </thead>
@@ -59,6 +60,13 @@
     </span>
 </td>
 
+<td>
+
+    {{ \Carbon\Carbon::parse($item->tanggal_pengeluaran)
+        ->translatedFormat('l, d F Y') }}
+
+</td>
+
             <td>
                 Rp {{ number_format($item->nominal, 0, ',', '.') }}
             </td>
@@ -69,7 +77,7 @@
 
                 
                 <a href="/pengeluaran/{{ $item->id }}/edit"
-                   class="btn btn-warning btn-sm">
+                   class="btn btn-warning btn-sm rounded-3">
                    Edit
                 </a>
 
@@ -82,7 +90,7 @@
                     @method('DELETE')
 
                     <button type="submit"
-                            class="btn btn-danger btn-sm"
+                            class="btn btn-danger btn-sm rounded-3"
                             onclick="return confirm('Yakin ingin menghapus data ini?')">
 
                         Hapus

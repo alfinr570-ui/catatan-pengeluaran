@@ -75,6 +75,20 @@
 
 </div>
 
+
+<div class="mb-3">
+
+    <label class="form-label">
+        Tanggal Pengeluaran
+    </label>
+
+    <input type="date"
+           name="tanggal_pengeluaran"
+           class="form-control"
+           value="{{ $pengeluaran->tanggal_pengeluaran }}">
+
+</div>
+
             
             <div class="mb-3">
 

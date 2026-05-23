@@ -57,6 +57,26 @@
 
     </select>
 
+   
+<div class="mb-3">
+
+    <label class="form-label">
+        Tanggal Pengeluaran
+    </label>
+
+    <input type="date"
+           name="tanggal_pengeluaran"
+           class="form-control @error('tanggal_pengeluaran') is-invalid @enderror"
+           value="{{ date('Y-m-d') }}">
+
+    @error('tanggal_pengeluaran')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+    @enderror
+
+</div>
+
     @error('kategori')
         <div class="invalid-feedback">
             {{ $message }}
